@@ -1,0 +1,4 @@
+psycopg[binary]
+pandas
+datasets
+python-dotenv
