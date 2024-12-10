@@ -1,0 +1,12 @@
+# dbt-specific ignores
+profiles.yml
+target/
+dbt_packages/
+logs/
+.env
+
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/

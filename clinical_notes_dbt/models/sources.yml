@@ -1,0 +1,47 @@
+# version: 2
+
+# sources:
+#   - name: clinical_notes_source
+#     database: clinical_db
+#     schema: public
+#     tables:
+#       - name: clinical_notes
+
+version: 2
+
+# Source definitions for clinical notes
+sources:
+  - name: clinical_notes_source
+    database: clinical_db 
+    schema: public
+    
+    # Source-level metadata and documentation
+    description: 'Raw clinical notes source data'
+    
+    # Table-level configurations
+    tables:
+      - name: clinical_notes
+        description: 'Original clinical notes before preprocessing'
+        
+        # Column-level metadata
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          
+          - name: note
+            description: 'Full text of clinical note'
+            tests:
+              - not_null
+        
+        # Optional: Source freshness checks
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        
+        # Optional: Row count tests
+        loaded_at_field: created_at
+        tests:
+          - dbt_utils.fewer_rows_than:
+              compare_model: ref('clinical_notes_preprocessed')
