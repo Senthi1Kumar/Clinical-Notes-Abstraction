@@ -2,6 +2,9 @@ psycopg[binary]
 pandas
 datasets
 python-dotenv
+gliner
+torch
+tqdm
 
 # For DBT installation w/ PostgreSQL adapter use venvs
 # python -m pip install dbt-core dbt-postgres
