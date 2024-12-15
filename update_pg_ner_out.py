@@ -115,7 +115,7 @@ class ClinicalNERMetadataUpdater:
         print('\nClinical notes table along with NER data in Postgres\n')
         print(df.to_string(index=False))
 
-        self.logger.info(f"Viewed {len(df)} clinical_notes table")
+        self.logger.info(f"Viewed {len(df)} rows from clinical_notes table")
 
         return df
 
